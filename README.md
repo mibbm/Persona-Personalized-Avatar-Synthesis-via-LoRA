@@ -32,7 +32,7 @@ Pipeline:
 
 Source: [CelebA subset-kaggle](https://www.kaggle.com/datasets/jessicali9530/celeba-dataset)
 
-Pixelization: Pyxelate를 활용해 16-color pixel art 데이터셋 생성
+Pixelization: Pyxelate를 활용해 16-color pixel art 1000장의 데이터셋 생성
 
 Format: PNG, 512×512 정규화
 
@@ -82,7 +82,7 @@ python src/inference.py \
 
 Baseline (Pyxelate) vs LoRA 학습 결과 비교
 
-### Input	Pyxelate                  ### 	Pyxelate Baseline	             ###LoRA Output
+### Input                ### Pyxelate Baseline	             ### LoRA Output
 
 	
 	
