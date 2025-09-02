@@ -39,27 +39,20 @@ Format: PNG, 512×512 정규화
 Preprocessing: Resize, CenterCrop, Normalize, Data Augmentation (flip, affine, color jitter 등)
 ### 예시:
 
-### Original	                    ### Pyxelate (Baseline)
+### Original	                    Pyxelate (Baseline)
 
 ## Training
 
 Environment: Google Colab Pro (T4 / A100 GPU)
 
-Hyperparameters:
-
-learning_rate: 5e-5
-
-batch_size: 2~8
-
-epochs: 3
-
-LoRA rank: 4, 8 (비교 실험)
-
-Optimizer: AdamW
-
-Loss: MSE (noise prediction, diffusion-style loss)
-
-Loss Curve 예시:???
+-Hyperparameters:
+ learning_rate: 5e-5
+ batch_size: 2~8
+ epochs: 3
+ LoRA rank: 4, 8 (비교 실험)
+ Optimizer: AdamW
+ Loss: MSE (noise prediction, diffusion-style loss)
+ Loss Curve 예시:???
 
 ##  Inference
 ### Text → Image
@@ -82,7 +75,7 @@ python src/inference.py \
 
 Baseline (Pyxelate) vs LoRA 학습 결과 비교
 
-### Input                ### Pyxelate Baseline	             ### LoRA Output
+### Input              Pyxelate Baseline	              LoRA Output
 
 	
 	
@@ -102,11 +95,15 @@ git clone https://github.com/yourname/PixelPersona.git
 cd PixelPersona
 pip install -r requirements.txt
 ```
+```ruby
+git add requirements.txt
+git commit -m "Add requirements.txt"
+git push origin main
+```
+
 ### 필수 패키지:
 torch, diffusers, transformers, accelerate
-
 pyxelate, Pillow, matplotlib
-
 peft (LoRA 지원)
 
 ## Roadmap
@@ -114,6 +111,6 @@ peft (LoRA 지원)
 - LoRA 외의 fine-tuning 지원 계획 등
 
 ## References
-- Pyxelate: [PIXELATE](https://github.com/sedthh/pyxelate)
+- Pyxelate: [SUPER PIXELATE](https://github.com/sedthh/pyxelate)
 - LoRA: Low-Rank Adaptation (arXiv:2106.09685)
 - HuggingFace Diffusers: https://huggingface.co/docs/diffusers/index
