@@ -57,16 +57,16 @@ Environment: Google Colab Pro (T4 / A100 GPU)
 
  learning_rate: 5e-5
  
- batch_size: 8
+ batch_size: 4
  
- epochs: 3
+ epochs: 5
  
  LoRA rank: 4
  
  Optimizer: AdamW
  
  Loss: MSE (noise prediction, diffusion-style loss)
- <img width="922" height="472" alt="Image" src="https://github.com/user-attachments/assets/e8424295-bae2-476d-a611-7364fd3a624b" />
+<img width="917" height="474" alt="Image" src="https://github.com/user-attachments/assets/17ee6efa-3073-4a03-bd7e-823f76a0c654" />
 
 ##  Inference
 ### Image → Image (사진 → 픽셀화)
