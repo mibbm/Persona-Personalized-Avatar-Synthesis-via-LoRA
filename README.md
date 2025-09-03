@@ -33,60 +33,58 @@ Pipeline:
 Source: [CelebA subset-kaggle](https://www.kaggle.com/datasets/jessicali9530/celeba-dataset)
 
 Pixelization: Pyxelate를 활용해 16-color pixel art 1000장의 데이터셋 생성
-
+```
+pyx = Pyx(factor=6, palette=32)
+```
 Format: PNG, 512×512 정규화
 
 Preprocessing: Resize, CenterCrop, Normalize, Data Augmentation (flip, affine, color jitter 등)
-### 예시:
 
-### Original	                    Pyxelate (Baseline)
+### 예시:
+<img width="614" height="316" alt="Image" src="https://github.com/user-attachments/assets/d1f699d7-8b43-4554-9b8e-17b99d52f238" />
 
 ## Training
 
 Environment: Google Colab Pro (T4 / A100 GPU)
 
 -Hyperparameters:
+
  learning_rate: 5e-5
- batch_size: 2~8
+ 
+ batch_size: 8
+ 
  epochs: 3
- LoRA rank: 4, 8 (비교 실험)
+ 
+ LoRA rank: 4
+ 
  Optimizer: AdamW
+ 
  Loss: MSE (noise prediction, diffusion-style loss)
- Loss Curve 예시:???
+ <img width="922" height="472" alt="Image" src="https://github.com/user-attachments/assets/e8424295-bae2-476d-a611-7364fd3a624b" />
 
 ##  Inference
-### Text → Image
-```ruby
-python src/inference.py \
-  --prompt "pixel art portrait, 16-color style" \
-  --output results/sample_t2i.png
-```
-
 ### Image → Image (사진 → 픽셀화)
 ```ruby
-python src/inference.py \
-  --image data/sample.jpg \
-  --prompt "pixel art portrait, 16-color style" \
-  --strength 0.65 \
-  --output results/sample_i2i.png
+prompt = "pixel art portrait, 16-color style"
+result = pipe(
+    prompt=prompt,
+    image=init_image,
+    strength=0.5,         
+    guidance_scale=7.5
+).images[0]
 ```
 
 ## Results
+<img width="798" height="361" alt="Image" src="https://github.com/user-attachments/assets/12575731-7676-478e-a68f-7579be366890" />
 
-Baseline (Pyxelate) vs LoRA 학습 결과 비교
-
-### Input              Pyxelate Baseline	              LoRA Output
-
-	
-	
 
 평가:
 
-Pyxelate: 단순화된 픽셀 변환, 디테일 손실
+베이스 모델(SD)은 얼굴, 표정, 손, 옷 주름 등 기본적인 디테일을 이미 학습해 두었음.
 
-LoRA: 디테일 유지 + 픽셀풍 재현, 더 자연스러운 결과
+LoRA는 이 위에 **픽셀화 스타일(네모칸, 단순화된 색 팔레트)**을 덧입히는 역할만 수행.
 
-정량 지표(FID) + 주관적 평가 병행
+따라서 표정과 윤곽은 자연스럽게 유지되면서, 전체가 픽셀 아트 느낌으로 변환됨.
 
 
 ## Installation
@@ -107,8 +105,8 @@ pyxelate, Pillow, matplotlib
 peft (LoRA 지원)
 
 ## Roadmap
-- 기능 확장 계획
-- LoRA 외의 fine-tuning 지원 계획 등
+- 웹 페이지 만들어 실전 사용
+- LoRA 외의 fine-tuning 지원 계획 
 
 ## References
 - Pyxelate: [SUPER PIXELATE](https://github.com/sedthh/pyxelate)
