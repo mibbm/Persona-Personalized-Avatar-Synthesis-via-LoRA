@@ -70,7 +70,7 @@ Environment: Google Colab Pro (T4 / A100 GPU)
 
 ##  Inference
 ### Image → Image (사진 → 픽셀화)
-```ruby
+```python
 prompt = "pixel art portrait, 16-color style"
 result = pipe(
     prompt=prompt,
@@ -94,12 +94,12 @@ LoRA는 이 위에 **픽셀화 스타일(네모칸, 단순화된 색 팔레트)*
 
 
 ## Installation
-```ruby
+```python
 git clone https://github.com/yourname/PixelPersona.git
 cd PixelPersona
 pip install -r requirements.txt
 ```
-```ruby
+```python
 git add requirements.txt
 git commit -m "Add requirements.txt"
 git push origin main
