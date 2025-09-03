@@ -14,19 +14,25 @@ Pyxelate를 사용해 기본 픽셀 데이터셋을 만들고 baseline 모델을
 
 ## Model Architecture
 
+### 실험 환경
+
 Base Model: Stable Diffusion v1.5
 
-Fine-tuning: LoRA (Low-Rank Adaptation, rank=4/8 실험)
+Fine-tuning: LoRA (Low-Rank Adaptation, rank=4 / 8 실험)
 
-Pipeline:
+### Pipeline:
 
-1. 텍스트 프롬프트 인코딩 (CLIP)
+1.텍스트 인코딩 (CLIP)
+→ 입력 프롬프트를 임베딩 벡터로 변환
 
-2. Latent space 변환 (VAE Encoder)
+2.Latent 변환 (VAE Encoder)
+→ 이미지를 잠재 공간(latent space)으로 압축
 
-3. UNet + LoRA fine-tuning
+3.UNet + LoRA Fine-tuning
+→ 픽셀화 스타일 학습 (베이스 디테일 유지)
 
-4. VAE Decoder → 최종 픽셀 아트 이미지
+4.VAE Decoder
+→ 잠재 공간을 다시 이미지로 복원 → 최종 픽셀 아트 생성
 
 ## Dataset
 
